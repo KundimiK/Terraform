@@ -11,6 +11,7 @@ module "ec2_instance" {
   ami                    = var.ami_id
   key_name               = var.key_name
   monitoring             = true
+  subnet_id     = "subnet-0b26182956477ce9f"
   vpc_security_group_ids = [aws_security_group.this.id]
 
   tags = {
