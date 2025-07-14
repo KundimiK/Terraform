@@ -4,19 +4,18 @@ provider "aws" {
 
 module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "5.5.0"
 
-  name = "demo-ec2"
+  name = "single-instance"
 
   instance_type          = var.instance_type
   ami                    = var.ami_id
   key_name               = var.key_name
-  monitoring             = false
+  monitoring             = true
   vpc_security_group_ids = [aws_security_group.this.id]
 
   tags = {
-    Environment = "dev"
     Terraform   = "true"
+    Environment = "dev"
   }
 }
 
